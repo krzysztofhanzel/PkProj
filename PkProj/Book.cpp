@@ -15,7 +15,13 @@ void Book::GenerujKsi¹¿kê()
 	cin >> Rok;
 	cout << "Dziêkujê. Podaj Gatunek: ";
 	cin >> Gatunek;
-	cou
+	cout << "Dziêkujê. Podaj Iloœæ stron publikacji: ";
+	cin >> Stron;
+	cout << "Dziêkujê. Podaj iloœæ sztuk na magazynie";
+	cin >> Iloœæ;
+	cout << "Dziêkujê. Podaj notkê literacj¹ odnoœnie tej pozycji:";
+	cin.ignore();
+	getline(cin,Notka);
 	
 }
 
