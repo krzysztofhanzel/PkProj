@@ -16,6 +16,7 @@ list <Video> ListaVideo;
 
 void MenuPrzedmiotów(list<Book>, list<Audiobook>, list<Music>, list <Video>)
 {
+
 }
 
 Book WydajKsi¹¿kê(list<Book> ListaKsi¹¿ek)
@@ -27,9 +28,10 @@ Book WydajKsi¹¿kê(list<Book> ListaKsi¹¿ek)
 	cout << "Podaj rok wydania: ";
 	cin >> Rok;
 	for( list<Book>::iterator iter=ListaKsi¹¿ek.begin(); iter != ListaKsi¹¿ek.end(); iter++) {
-				tmpbook = *iter;
-				if (tmpbook.Tytu³ == Tytu³ && tmpbook.Rok == Rok) return tmpbook;
+		if (iter->Tytu³ == Tytu³ && iter->Rok == Rok) 
+					tmpbook = *iter;
 	}
+	return tmpbook;
 }
 
 Audiobook WydajAudiobook(list<Audiobook> ListaAudiobook)
@@ -41,9 +43,10 @@ Audiobook WydajAudiobook(list<Audiobook> ListaAudiobook)
 	cout << "Podaj rok wydania: ";
 	cin >> Rok;
 	for( list<Audiobook>::iterator iter=ListaAudiobook.begin(); iter != ListaAudiobook.end(); iter++) {
+		if (iter->Tytu³ == Tytu³ && iter->Rok == Rok)
 		tmpaudiobook = *iter;
-		if (tmpaudiobook.Tytu³ == Tytu³ && tmpaudiobook.Rok == Rok) return tmpaudiobook;
 	}
+	return tmpaudiobook;
 }
 
 Music WydajMuzykê(list<Music> ListaMusic)
@@ -55,9 +58,10 @@ Music WydajMuzykê(list<Music> ListaMusic)
 	cout << "Podaj rok wydania: ";
 	cin >> Rok;
 	for( list<Music>::iterator iter=ListaMusic.begin(); iter != ListaMusic.end(); iter++) {
+		if (iter->Tytu³ == Tytu³ && iter->Rok == Rok)
 		tmpmusic = *iter;
-		if (tmpmusic.Tytu³ == Tytu³ && tmpmusic.Rok == Rok) return tmpmusic;
 	}
+	return tmpmusic;
 }
 
 Video WydajFilm(list<Video> ListaVideo)
@@ -69,9 +73,10 @@ Video WydajFilm(list<Video> ListaVideo)
 	cout << "Podaj rok wydania: ";
 	cin >> Rok;
 	for( list<Video>::iterator iter=ListaVideo.begin(); iter != ListaVideo.end(); iter++) {
+		if (iter->Tytu³ == Tytu³ && iter->Rok == Rok)
 		tmpvideo = *iter;
-		if (tmpvideo.Tytu³ == Tytu³ && tmpvideo.Rok == Rok) return tmpvideo;
 	}
+	return tmpvideo;
 }
 
 

@@ -8,11 +8,9 @@
 
 using namespace std;
 
-list<Twórca> ListaAutorów;
-Twórca tmpautor;
-
 void Book::GenerujKsi¹¿kê(list<Twórca> ListaTwórców)
 {
+	Twórca tmpautor;
 	int tmpint;
 	system ("CLS");
 	UuidCreate (&Id);
