@@ -133,9 +133,10 @@ Twórca Zarz¹dcaOsób::WydajTwórcê (list<Twórca> ListaTwórców)
 			cout << "Podaj nazwisko:";
 			cin >> TmpNazwisko;
 			for( list<Twórca>::iterator iter=ListaTwórców.begin(); iter != ListaTwórców.end(); iter++) {
-				tmp = *iter;
-				if (tmp.Imie == TmpImie && tmp.Nazwisko == TmpNazwisko) return tmp;
+				if (iter->Imie == TmpImie && iter->Nazwisko == TmpNazwisko)
+					tmp = *iter;
 			}
+			return tmp;
 }
 
 int Zarz¹dcaOsób::MenuAdmina (list<Admin> ListaAdminów)

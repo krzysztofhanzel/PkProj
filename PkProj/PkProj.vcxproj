@@ -91,6 +91,7 @@
     <ClInclude Include="Video.h" />
     <ClInclude Include="ZarządcaOsób.h" />
     <ClInclude Include="ZarządcaPrzedmiotów.h" />
+    <ClInclude Include="ZarządcaWypożyczeń.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
@@ -110,6 +111,7 @@
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="ZarządcaOsób.cpp" />
     <ClCompile Include="ZarządcaPrzedmiotów.cpp" />
+    <ClCompile Include="ZarządcaWypożyczeń.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
