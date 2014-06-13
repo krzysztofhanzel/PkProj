@@ -11,6 +11,11 @@ class Zarz¹dcaPrzedmiotów
 {
 public:
 	void MenuPrzedmiotów(list<Book>, list<Audiobook>, list<Music>, list <Video>);
+	static void MenuBook(list<Book>);
+	static void MenuAudiobook(list<Audiobook>);
+	static void MenuMusic(list<Music>);
+	static void MenuVideo(list<Video>);
+
 	static Book WydajKsi¹¿kê(list<Book>);
 	static Audiobook WydajAudiobook(list<Audiobook>);
 	static Music WydajMuzykê(list<Music>);
