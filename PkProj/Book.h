@@ -17,6 +17,7 @@ public:
 
 	void GenerujKsi¹¿kê(std::list<Twórca>);
 	void Przedstaw(void);
+	void Przedstaw(std::string);
 	Book(void);
 	~Book(void);
 };

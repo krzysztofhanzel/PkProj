@@ -41,6 +41,12 @@ void Book::Przedstaw()
 	cout << "Tytu³: " << Tytu³ << " Gatunek: " << Gatunek << " rok: " << Rok << " Stron: " << Stron << " na magazynie " << Iloœæ << "sztuk.";
 }
 
+void Book::Przedstaw(string TmpGatunek)
+{
+	if (Gatunek == TmpGatunek)
+		cout << "Tytu³: " << Tytu³ << " rok: " << Rok << " Stron: " << Stron << " na magazynie " << Iloœæ << "sztuk.";
+}
+
 Book::Book(void)
 {
 }
