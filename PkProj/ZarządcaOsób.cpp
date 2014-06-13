@@ -13,7 +13,7 @@ Zarz¹dcaOsób::Zarz¹dcaOsób(void)
 	
 }
 
-int Zarz¹dcaOsób::MenuTwórców (void)
+int Zarz¹dcaOsób::MenuTwórców(list<Twórca> ListaTwórców)
 {
 	Twórca tmp; 
 	string TmpImie, TmpNazwisko;
@@ -115,7 +115,30 @@ int Zarz¹dcaOsób::MenuTwórców (void)
 	return(0);
 }
 
-int Zarz¹dcaOsób::MenuAdmina (void)
+Twórca Zarz¹dcaOsób::DodajTwórcê (list<Twórca> ListaTwórców) 
+{
+	Twórca tmp;
+	tmp.GenerujTwórca();
+	ListaTwórców.push_back(tmp);
+	return tmp;
+}
+
+Twórca Zarz¹dcaOsób::WydajTwórcê (list<Twórca> ListaTwórców)
+{
+	string TmpImie, TmpNazwisko;
+	Twórca tmp;
+	system ("CLS");
+			cout << "Podaj imiê:";
+			cin >> TmpImie;
+			cout << "Podaj nazwisko:";
+			cin >> TmpNazwisko;
+			for( list<Twórca>::iterator iter=ListaTwórców.begin(); iter != ListaTwórców.end(); iter++) {
+				tmp = *iter;
+				if (tmp.Imie == TmpImie && tmp.Nazwisko == TmpNazwisko) return tmp;
+			}
+}
+
+int Zarz¹dcaOsób::MenuAdmina (list<Admin> ListaAdminów)
 	{
 	Admin tmp; 
 	string TmpLogin;
@@ -177,7 +200,7 @@ int Zarz¹dcaOsób::MenuAdmina (void)
 				cout << "Operacja ta spowoduje unieruchomienie programu do czasu rêcznego wprowadzenia danych przez serwis. Czy aby na pewno chcesz kontunuowaæ?? [T/N]";
 				cin >> tmpChar;
 				if (tmpChar == 'T' || tmpChar == 't') {
-					ListaTwórców.clear();
+					ListaAdminów.clear();
 				}
 			}
 			break;

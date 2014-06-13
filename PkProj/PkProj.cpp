@@ -4,7 +4,13 @@
 #include "stdafx.h"
 #include "Zarz¹dcaOsób.h"
 #include <iostream>
+#include <list>
+#include "Admin.h"
+#include "Twórca.h"
 using namespace std;
+
+list<Twórca> ListaTwórców;
+list<Admin> ListaAdminów;
 
 #include <list>
 
@@ -18,17 +24,24 @@ int _tmain(int argc, _TCHAR* argv[])
 	do {
 		system ("CLS");
 		cout << "Wybierz opcje menu: \n";
-		cout << "1. Twórcy\n";
-		cout << "2. AdminMenu\n";
+		cout << "1. Wypo¿yczenia\n";
+		cout << "2. Zarz¹dzaj zbiorami\n";
+		cout << "2. Twórcy\n";
+		cout << "3. AdminMenu\n";
 		cout << "9. Wyjœcie\n";
 		cin >> switch_on;
 		switch (switch_on)
 		{
 		case 1:
-			Zarz¹dca.MenuTwórców();
 			break;
 		case 2:
-			Zarz¹dca.MenuAdmina();
+
+			break;
+		case 3:
+			Zarz¹dca.MenuTwórców(ListaTwórców);
+			break;
+		case 4:
+			Zarz¹dca.MenuAdmina(ListaAdminów);
 			break;
 		case 9:
 			break;

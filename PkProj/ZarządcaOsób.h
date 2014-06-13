@@ -8,10 +8,10 @@ using namespace std;
 class Zarz¹dcaOsób
 {
 public:
-	list<Twórca> ListaTwórców;
-	list<Admin> ListaAdminów;
-	int MenuTwórców(void);
-	int MenuAdmina(void);
+	int MenuTwórców(list<Twórca>);
+	static Twórca DodajTwórcê(list<Twórca>);
+	static Twórca WydajTwórcê(list<Twórca>);
+	int MenuAdmina(list<Admin>);
 	Zarz¹dcaOsób(void);
 	~Zarz¹dcaOsób(void);
 };
