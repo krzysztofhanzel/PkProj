@@ -14,7 +14,7 @@ public:
 	double Czas;
 	std::string Notka;
 
-	void GenerujVideo(std::list<Twórca>);
+	void GenerujVideo(std::list<Twórca>*);
 	void Przedstaw(void);
 	void Przedstaw(std::string);
 	Video(void);

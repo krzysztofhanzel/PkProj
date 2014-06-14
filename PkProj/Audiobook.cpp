@@ -7,8 +7,9 @@
 #include <list>
 #include "Twórca.h"
 
-void Audiobook::GenerujAudiobook(list<Twórca> ListaTwórców)
+void Audiobook::GenerujAudiobook(list<Twórca>* Twórcy)
 {
+	list<Twórca> ListaTwórców;			ListaTwórców = *Twórcy;
 	Twórca tmpautor;
 	int tmpint;
 	system ("CLS");
@@ -36,6 +37,7 @@ void Audiobook::GenerujAudiobook(list<Twórca> ListaTwórców)
 	cout << "Dziêkujê. Podaj notkê literacj¹ odnoœnie tej pozycji:";
 	cin.ignore();
 	getline(cin,Notka);
+	*Twórcy = ListaTwórców;
 }
 
 void Audiobook::Przedstaw(void)

@@ -14,7 +14,7 @@ public:
 	double Czas;
 	std::string Notka;
 
-	void GenerujMusic(std::list<Twórca>);
+	void GenerujMusic(std::list<Twórca>*);
 	void Przedstaw(void);
 	void Przedstaw(std::string);
 	Music(void);

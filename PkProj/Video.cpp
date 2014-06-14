@@ -7,8 +7,9 @@
 #include <list>
 #include "Twórca.h"
 
-void Video::GenerujVideo(list<Twórca> ListaTwórców)
+void Video::GenerujVideo(list<Twórca> * Twórcy)
 {
+	list<Twórca> ListaTwórców;			ListaTwórców = *Twórcy;
 	Twórca tmpaktor;
 	int tmpint;
 	system ("CLS");
@@ -37,6 +38,7 @@ void Video::GenerujVideo(list<Twórca> ListaTwórców)
 	cout << "Dziêkujê. Podaj notkê literacj¹ odnoœnie tej pozycji:";
 	cin.ignore();
 	getline(cin,Notka);
+	*Twórcy = ListaTwórców;
 }
 
 void Video::Przedstaw(void)

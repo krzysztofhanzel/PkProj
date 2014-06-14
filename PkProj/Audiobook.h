@@ -14,7 +14,7 @@ public:
 	double Czas;
 	std::string Notka;
 
-	void GenerujAudiobook(std::list<Twórca>);
+	void GenerujAudiobook(std::list<Twórca>*);
 	void Przedstaw(void);
 	void Przedstaw(std::string);
 	Audiobook(void);

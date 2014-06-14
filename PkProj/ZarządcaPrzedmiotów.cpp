@@ -63,7 +63,7 @@ void Zarz¹dcaPrzedmiotów::MenuBook(list<Twórca>* Twórcy, list<Book>* Booktmp)
 		switch (switch_on)
 		{
 		case 1:
-			TmpBook.GenerujKsi¹¿kê(ListaTwórców);
+			TmpBook.GenerujKsi¹¿kê(Twórcy);
 			ListaBook.push_back(TmpBook);
 			break;
 		case 2:
@@ -99,7 +99,7 @@ void Zarz¹dcaPrzedmiotów::MenuBook(list<Twórca>* Twórcy, list<Book>* Booktmp)
 					char tmpChar;
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
-						TmpBook.GenerujKsi¹¿kê(ListaTwórców);
+						TmpBook.GenerujKsi¹¿kê(Twórcy);
 						*iter = TmpBook;
 					}
 				}
@@ -177,7 +177,7 @@ void Zarz¹dcaPrzedmiotów::MenuAudiobook(list<Twórca>* Twórcy, list<Audiobook>* A
 		switch (switch_on)
 		{
 		case 1:
-			TmpAudiobook.GenerujAudiobook(ListaTwórców);
+			TmpAudiobook.GenerujAudiobook(Twórcy);
 			ListaAudiobook.push_back(TmpAudiobook);
 			break;
 		case 2:
@@ -214,7 +214,7 @@ void Zarz¹dcaPrzedmiotów::MenuAudiobook(list<Twórca>* Twórcy, list<Audiobook>* A
 					char tmpChar;
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
-						TmpAudiobook.GenerujAudiobook(ListaTwórców);
+						TmpAudiobook.GenerujAudiobook(Twórcy);
 						*iter = TmpAudiobook;
 					}
 				}
@@ -291,7 +291,7 @@ void Zarz¹dcaPrzedmiotów::MenuMusic(list<Twórca>* Twórcy, list<Music>* Musictmp)
 		switch (switch_on)
 		{
 		case 1:
-			TmpMusic.GenerujMusic(ListaTwórców);
+			TmpMusic.GenerujMusic(Twórcy);
 			ListaMusic.push_back(TmpMusic);
 			break;
 		case 2:
@@ -328,7 +328,7 @@ void Zarz¹dcaPrzedmiotów::MenuMusic(list<Twórca>* Twórcy, list<Music>* Musictmp)
 					char tmpChar;
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
-						TmpMusic.GenerujMusic(ListaTwórców);
+						TmpMusic.GenerujMusic(Twórcy);
 						*iter = TmpMusic;
 					}
 				}
@@ -404,7 +404,7 @@ void Zarz¹dcaPrzedmiotów::MenuVideo(list<Twórca>* Twórcy, list<Video>* Videotmp)
 		switch (switch_on)
 		{
 		case 1:
-			TmpVideo.GenerujVideo(ListaTwórców);
+			TmpVideo.GenerujVideo(Twórcy);
 			ListaVideo.push_back(TmpVideo);
 			break;
 		case 2:
@@ -440,7 +440,7 @@ void Zarz¹dcaPrzedmiotów::MenuVideo(list<Twórca>* Twórcy, list<Video>* Videotmp)
 					char tmpChar;
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
-						TmpVideo.GenerujVideo(ListaTwórców);
+						TmpVideo.GenerujVideo(Twórcy);
 						*iter = TmpVideo;
 					}
 				}

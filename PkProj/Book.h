@@ -15,7 +15,7 @@ public:
 	int Stron;
 	std::string Notka;
 
-	void GenerujKsi¹¿kê(std::list<Twórca>);
+	void GenerujKsi¹¿kê(std::list<Twórca>*);
 	void Przedstaw(void);
 	void Przedstaw(std::string);
 	Book(void);

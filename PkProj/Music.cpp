@@ -7,8 +7,9 @@
 #include <list>
 #include "Twórca.h"
 
-void Music::GenerujMusic(list<Twórca> ListaTwórców)
+void Music::GenerujMusic(list<Twórca>* Twórcy)
 {
+	list<Twórca> ListaTwórców;			ListaTwórców = *Twórcy;
 	Twórca tmpwykonawca;
 	int tmpint;
 	system ("CLS");
@@ -37,6 +38,7 @@ void Music::GenerujMusic(list<Twórca> ListaTwórców)
 	cout << "Dziêkujê. Podaj notkê literacj¹ odnoœnie tej pozycji:";
 	cin.ignore();
 	getline(cin,Notka);
+	*Twórcy = ListaTwórców;
 }
 
 void Music::Przedstaw(void)

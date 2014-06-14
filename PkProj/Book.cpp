@@ -8,8 +8,9 @@
 
 using namespace std;
 
-void Book::GenerujKsi¹¿kê(list<Twórca> ListaTwórców)
+void Book::GenerujKsi¹¿kê(list<Twórca> * Twórcy)
 {
+	list<Twórca> ListaTwórców;			ListaTwórców = *Twórcy;
 	Twórca tmpautor;
 	int tmpint;
 	system ("CLS");
@@ -36,6 +37,7 @@ void Book::GenerujKsi¹¿kê(list<Twórca> ListaTwórców)
 	cin.ignore();
 	getline(cin,Notka);
 	
+	*Twórcy = ListaTwórców;
 }
 
 void Book::Przedstaw()
