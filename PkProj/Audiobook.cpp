@@ -42,6 +42,14 @@ void Audiobook::Przedstaw(void)
 	cout << " Rok wydania ksi¹¿ki: " << RokKsi¹¿ki << " na magazynie " << Iloœæ << "sztuk.";
 }
 
+void Audiobook::Przedstaw(string TmpGatunek)
+{
+	if (Gatunek == TmpGatunek){
+		cout << "Tytu³: " << Tytu³ << " Gatunek: " << Gatunek << " rok: " << Rok << " czas s³uchania(minut): " << Czas;
+		cout << " Rok wydania ksi¹¿ki: " << RokKsi¹¿ki << " na magazynie " << Iloœæ << "sztuk.";
+	}
+}
+
 Audiobook::Audiobook(void)
 {
 }

@@ -155,9 +155,217 @@ void Zarz¹dcaPrzedmiotów::MenuBook(list<Twórca> ListaTwórców, list<Book> ListaBo
 }
 void Zarz¹dcaPrzedmiotów::MenuAudiobook(list<Twórca> ListaTwórców, list<Audiobook> ListaAudiobook)
 {
+	Audiobook TmpAudiobook; string TmpTytu³, TmpGatunek; int TmpInt; char tmpChar;
+	int switch_on;
+	do {
+		system ("CLS");
+			cout << "Wybierz opcje menu Ksi¹¿ek: \n";
+			cout << "1.Dodaj Ksi¹¿kê\n";
+			cout << "2.Przegl¹daj listê wszystkich\n";
+			cout << "3.Przegl¹daj listê Gatunkowo\n";
+			cout << "4.Zast¹p poszczególne wyst¹pienia\n";
+			cout << "5.Kasuj ca³¹ listê\n";
+			cout << "6.Kasuj wybrany element listy\n";
+			cout << "7.Zaktualizuj stan magazynowy\n";
+			cout << "9.Wyjœcie\n";
+		cin >> switch_on;
+		switch (switch_on)
+		{
+		case 1:
+			TmpAudiobook.GenerujAudiobook(ListaTwórców);
+			ListaAudiobook.push_back(TmpAudiobook);
+			break;
+		case 2:
+			system ("CLS");
+			for( list<Audiobook>::iterator iter=ListaAudiobook.begin(); iter != ListaAudiobook.end(); iter++)
+			{
+				TmpAudiobook = *iter;
+				TmpAudiobook.Przedstaw();
+			}
+			std::system ("pause");
+			break;
+		case 3:
+			system ("CLS");
+			cout << "\n Wpisz poszukiwany gatunek: \n";
+			cin >> TmpGatunek;
+			for( list<Audiobook>::iterator iter=ListaAudiobook.begin(); iter != ListaAudiobook.end(); iter++)
+			{
+				TmpAudiobook = *iter;
+				TmpAudiobook.Przedstaw(TmpGatunek);
+			}
+			std::system ("pause");
+			break;
+		case 4:
+			system ("CLS");
+			cout << "Podaj Tytu³ Ksi¹¿ki:";
+			cin >> TmpTytu³;
+			for( list<Audiobook>::iterator iter=ListaAudiobook.begin(); iter != ListaAudiobook.end(); iter++) {
+				TmpAudiobook = *iter;
+				if (TmpAudiobook.Tytu³ == TmpTytu³) {
+					cout << "Obecny rekord to:\n";
+					TmpAudiobook.Przedstaw();
+					cout << "Zmieniæ? [T/N]";
+					char tmpChar;
+					cin >> tmpChar;
+					if (tmpChar == 'T' || tmpChar == 't') {
+						TmpAudiobook.GenerujAudiobook(ListaTwórców);
+						*iter = TmpAudiobook;
+					}
+				}
+			}
+			break;
+		case 5:
+			cout << "Czy aby na pewno chcesz skasowaæ ca³¹ listê? [T/N]";
+			char tmpChar;
+			cin >> tmpChar;
+			if (tmpChar == 'T' || tmpChar == 't')
+				ListaAudiobook.clear();
+			break;
+		case 6:
+			system ("CLS");
+			cout << "Podaj Tytu³ Ksi¹¿ki:";
+			cin >> TmpTytu³;
+			for( list<Audiobook>::iterator iter=ListaAudiobook.begin(); iter != ListaAudiobook.end(); iter++) {
+				TmpAudiobook = *iter;
+				if (TmpAudiobook.Tytu³ == TmpTytu³) {
+					cout << "Obecny rekord to:\n";
+					TmpAudiobook.Przedstaw();
+					cout << "Usun¹æ? [T/N]";
+					cin >> tmpChar;
+					if (tmpChar == 'T' || tmpChar == 't') {
+						iter = ListaAudiobook.erase(iter);
+					}
+				}
+			}
+		case 7:
+			system ("CLS");
+			cout << "Podaj Tytu³ Ksi¹¿ki:";
+			cin >> TmpTytu³;
+			for( list<Audiobook>::iterator iter=ListaAudiobook.begin(); iter != ListaAudiobook.end(); iter++) {
+				TmpAudiobook = *iter;
+				if (TmpAudiobook.Tytu³ == TmpTytu³) {
+					cout << "Obecny rekord to:\n";
+					TmpAudiobook.Przedstaw();
+					cout << "Na magazynie mamy " << TmpAudiobook.Iloœæ << " sztuk tej pozycji. Ile chcesz dodaæ? :";
+					cin >> TmpInt;
+					cout << "Chcesz dodaæ " << TmpInt << " ksi¹¿ek.  po operacji bêdzie " << (TmpAudiobook.Iloœæ + TmpInt) << " ksi¹¿ek. Czy chcesz kontynuowaæ? [T/N]:\n ";
+					cin >> tmpChar;
+					if (tmpChar == 'T' || tmpChar == 't')
+						iter->Iloœæ += TmpInt;
+				}
+			}
+			break;
+		default:
+			break;
+		}
+	} while (switch_on != 9);
 }
 void Zarz¹dcaPrzedmiotów::MenuMusic(list<Twórca> ListaTwórców, list<Music> ListaMusic)
 {
+	Music TmpMusic; string TmpTytu³, TmpGatunek; int TmpInt; char tmpChar;
+	int switch_on;
+	do {
+		system ("CLS");
+			cout << "Wybierz opcje menu P³yt: \n";
+			cout << "1.Dodaj P³ytê\n";
+			cout << "2.Przegl¹daj listê wszystkich\n";
+			cout << "3.Przegl¹daj listê Gatunkowo\n";
+			cout << "4.Zast¹p poszczególne wyst¹pienia\n";
+			cout << "5.Kasuj ca³¹ listê\n";
+			cout << "6.Kasuj wybrany element listy\n";
+			cout << "7.Zaktualizuj stan magazynowy\n";
+			cout << "9.Wyjœcie\n";
+		cin >> switch_on;
+		switch (switch_on)
+		{
+		case 1:
+			TmpMusic.GenerujMusic(ListaTwórców);
+			ListaMusic.push_back(TmpMusic);
+			break;
+		case 2:
+			system ("CLS");
+			for( list<Music>::iterator iter=ListaMusic.begin(); iter != ListaMusic.end(); iter++)
+			{
+				TmpMusic = *iter;
+				TmpMusic.Przedstaw();
+			}
+			std::system ("pause");
+			break;
+		case 3:
+			system ("CLS");
+			cout << "\n Wpisz poszukiwany gatunek: \n";
+			cin >> TmpGatunek;
+			for( list<Music>::iterator iter=ListaMusic.begin(); iter != ListaMusic.end(); iter++)
+			{
+				TmpMusic = *iter;
+				TmpMusic.Przedstaw(TmpGatunek);
+			}
+			std::system ("pause");
+			break;
+		case 4:
+			system ("CLS");
+			cout << "Podaj Tytu³ P³yty:";
+			cin >> TmpTytu³;
+			for( list<Music>::iterator iter=ListaMusic.begin(); iter != ListaMusic.end(); iter++) {
+				TmpMusic = *iter;
+				if (TmpMusic.Tytu³ == TmpTytu³) {
+					cout << "Obecny rekord to:\n";
+					TmpMusic.Przedstaw();
+					cout << "Zmieniæ? [T/N]";
+					char tmpChar;
+					cin >> tmpChar;
+					if (tmpChar == 'T' || tmpChar == 't') {
+						TmpMusic.GenerujMusic(ListaTwórców);
+						*iter = TmpMusic;
+					}
+				}
+			}
+			break;
+		case 5:
+			cout << "Czy aby na pewno chcesz skasowaæ ca³¹ listê? [T/N]";
+			char tmpChar;
+			cin >> tmpChar;
+			if (tmpChar == 'T' || tmpChar == 't')
+				ListaMusic.clear();
+			break;
+		case 6:
+			system ("CLS");
+			cout << "Podaj Tytu³ P³yty:";
+			cin >> TmpTytu³;
+			for( list<Music>::iterator iter=ListaMusic.begin(); iter != ListaMusic.end(); iter++) {
+				TmpMusic = *iter;
+				if (TmpMusic.Tytu³ == TmpTytu³) {
+					cout << "Obecny rekord to:\n";
+					TmpMusic.Przedstaw();
+					cout << "Usun¹æ? [T/N]";
+					cin >> tmpChar;
+					if (tmpChar == 'T' || tmpChar == 't') {
+						iter = ListaMusic.erase(iter);
+					}
+				}
+			}
+		case 7:
+			system ("CLS");
+			cout << "Podaj Tytu³ P³yty:";
+			cin >> TmpTytu³;
+			for( list<Music>::iterator iter=ListaMusic.begin(); iter != ListaMusic.end(); iter++) {
+				TmpMusic = *iter;
+				if (TmpMusic.Tytu³ == TmpTytu³) {
+					cout << "Obecny rekord to:\n";
+					TmpMusic.Przedstaw();
+					cout << "Na magazynie mamy " << TmpMusic.Iloœæ << " sztuk tej p³yty. Ile chcesz dodaæ? :";
+					cin >> TmpInt;
+					cout << "Chcesz dodaæ " << TmpInt << " p³yt.  po operacji bêdzie " << (TmpMusic.Iloœæ + TmpInt) << " p³yt. Czy chcesz kontynuowaæ? [T/N]:\n ";
+					cin >> tmpChar;
+					if (tmpChar == 'T' || tmpChar == 't')
+						iter->Iloœæ += TmpInt;
+				}
+			}
+			break;
+		default:
+			break;
+		}
+	} while (switch_on != 9);
 }
 void Zarz¹dcaPrzedmiotów::MenuVideo(list<Twórca> ListaTwórców, list<Video> ListaVideo)
 {

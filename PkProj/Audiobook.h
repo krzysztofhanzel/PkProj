@@ -16,6 +16,7 @@ public:
 
 	void GenerujAudiobook(std::list<Twórca>);
 	void Przedstaw(void);
+	void Przedstaw(std::string);
 	Audiobook(void);
 	~Audiobook(void);
 };

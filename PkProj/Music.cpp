@@ -43,6 +43,14 @@ void Music::Przedstaw(void)
 	cout << " na magazynie " << Iloœæ << "sztuk.";
 }
 
+void Music::Przedstaw(string TmpGatunek)
+{
+	if (Gatunek == TmpGatunek){
+		cout << "Tytu³: " << Tytu³ << " z albumu "<< Album << " rok: " << Rok << " czas s³uchania(minut): " << Czas;
+		cout << " na magazynie " << Iloœæ << "sztuk.";
+	}
+}
+
 Music::Music(void)
 {
 }
