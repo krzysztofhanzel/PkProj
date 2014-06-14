@@ -15,17 +15,19 @@ void Book::GenerujKsi¹¿kê(list<Twórca> ListaTwórców)
 	system ("CLS");
 	UuidCreate (&Id);
 	cout << "Dodawanie pozycji ksi¹¿kowej. Podaj Tytu³:";
-	cin >> Tytu³;
+	cin.ignore();
+	getline(cin,Tytu³);
 	do {
 		cout << "Obecnie na liœcie jest" << ListaAutorów.size() << "autorów.\nWybierz czy chcesz dodaæ nowego autora, wybraæ istniej¹cego czy te¿ wyjœæ?:\n1.Nowy Autor.\n2.Istniej¹cy Autor\n3.Wyjœcie";
 		cin >> tmpint;
-		if (tmpint == 1) ListaAutorów.push_back(tmpautor = Zarz¹dcaOsób::DodajTwórcê(ListaTwórców));
-		if (tmpint == 2) ListaAutorów.push_back(tmpautor = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców));	
+		if (tmpint == 1) ListaAutorów.push_back(tmpautor = Zarz¹dcaOsób::DodajTwórcê(&ListaTwórców));
+		if (tmpint == 2) {tmpautor = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców); if (tmpautor.Plec == ' ')  ListaAutorów.push_back(tmpautor);}
 	} while (tmpint !=3);
 	cout << "Dziêkujê. Podaj Rok wydania: ";
 	cin >> Rok;
 	cout << "Dziêkujê. Podaj Gatunek: ";
-	cin >> Gatunek;
+	cin.ignore();
+	getline(cin,Gatunek);
 	cout << "Dziêkujê. Podaj Iloœæ stron publikacji: ";
 	cin >> Stron;
 	cout << "Dziêkujê. Podaj iloœæ sztuk na magazynie";

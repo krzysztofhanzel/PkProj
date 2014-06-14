@@ -16,6 +16,7 @@ public:
 
 	void GenerujVideo(std::list<Twórca>);
 	void Przedstaw(void);
+	void Przedstaw(std::string);
 	Video(void);
 	~Video(void);
 };

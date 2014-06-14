@@ -13,8 +13,10 @@ Zarz¹dcaOsób::Zarz¹dcaOsób(void)
 	
 }
 
-int Zarz¹dcaOsób::MenuTwórców(list<Twórca> ListaTwórców)
+void Zarz¹dcaOsób::MenuTwórców(list<Twórca>* Twórcy)
 {
+	list<Twórca> ListaTwórców;
+	ListaTwórców = *Twórcy;
 	Twórca tmp; 
 	string TmpImie, TmpNazwisko;
 	int switch_on;
@@ -112,14 +114,16 @@ int Zarz¹dcaOsób::MenuTwórców(list<Twórca> ListaTwórców)
 			break;
 		}
 	} while (switch_on != 9);
-	return(0);
+	*Twórcy = ListaTwórców;
 }
 
-Twórca Zarz¹dcaOsób::DodajTwórcê (list<Twórca> ListaTwórców) 
+Twórca Zarz¹dcaOsób::DodajTwórcê (list<Twórca>* ListaTwórców) 
 {
-	Twórca tmp;
+	Twórca tmp; list<Twórca> lista;
 	tmp.GenerujTwórca();
-	ListaTwórców.push_back(tmp);
+	lista = *ListaTwórców;
+	lista.push_back(tmp);
+	ListaTwórców = &lista;
 	return tmp;
 }
 
@@ -139,8 +143,10 @@ Twórca Zarz¹dcaOsób::WydajTwórcê (list<Twórca> ListaTwórców)
 			return tmp;
 }
 
-int Zarz¹dcaOsób::MenuAdmina (list<Admin> ListaAdminów)
+int Zarz¹dcaOsób::MenuAdmina (list<Admin>* Admini)
 	{
+		list<Admin> ListaAdminów;
+		ListaAdminów = *Admini;
 	Admin tmp; 
 	string TmpLogin;
 	int switch_on;
@@ -227,6 +233,7 @@ int Zarz¹dcaOsób::MenuAdmina (list<Admin> ListaAdminów)
 			break;
 		}
 	} while (switch_on != 9);
+	*Admini = ListaAdminów;
 	return(0);
 }
 

@@ -10,11 +10,11 @@ using namespace std;
 class Zarz¹dcaPrzedmiotów
 {
 public:
-	void MenuPrzedmiotów(list <Twórca>, list<Book>, list<Audiobook>, list<Music>, list <Video>);
-	static void MenuBook(list <Twórca>, list<Book>);
-	static void MenuAudiobook(list <Twórca>, list<Audiobook>);
-	static void MenuMusic(list <Twórca>, list<Music>);
-	static void MenuVideo(list <Twórca>, list<Video>);
+	void MenuPrzedmiotów(list <Twórca>*, list<Book>*, list<Audiobook>*, list<Music>*, list <Video>*);
+	static void MenuBook(list <Twórca>*, list<Book>*);
+	static void MenuAudiobook(list <Twórca>*, list<Audiobook>*);
+	static void MenuMusic(list <Twórca>*, list<Music>*);
+	static void MenuVideo(list <Twórca>*, list<Video>*);
 
 	static Book WydajKsi¹¿kê(list<Book>);
 	static Audiobook WydajAudiobook(list<Audiobook>);

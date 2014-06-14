@@ -19,7 +19,7 @@ void Video::GenerujVideo(list<Twórca> ListaTwórców)
 	do {
 		cout << "Obecnie na liœcie jest" << ListaAutorów.size() << "aktorów.\nWybierz czy chcesz dodaæ nowego, wybraæ istniej¹cego czy te¿ wyjœæ?:\n1.Nowy Aktor.\n2.Istniej¹cy Aktor\n3.Wyjœcie";
 		cin >> tmpint;
-		if (tmpint == 1) ListaAutorów.push_back(tmpaktor = Zarz¹dcaOsób::DodajTwórcê(ListaTwórców));
+		if (tmpint == 1) ListaAutorów.push_back(tmpaktor = Zarz¹dcaOsób::DodajTwórcê(&ListaTwórców));
 		if (tmpint == 2) ListaAutorów.push_back(tmpaktor= Zarz¹dcaOsób::WydajTwórcê(ListaTwórców));	
 	} while (tmpint !=3);
 	cout << "Dziêkujê. Podaj Wersjê jêzykow¹:";
@@ -28,7 +28,8 @@ void Video::GenerujVideo(list<Twórca> ListaTwórców)
 	cout << "Dziêkujê. Podaj Rok premiery: ";
 	cin >> Rok;
 	cout << "Dziêkujê. Podaj Gatunek: ";
-	cin >> Gatunek;
+	cin.ignore();
+	getline(cin,Gatunek);
 	cout << "Dziêkujê. Podaj czas trwania(minuty): ";
 	cin >> Czas;
 	cout << "Dziêkujê. Podaj iloœæ sztuk na magazynie";
@@ -42,6 +43,14 @@ void Video::Przedstaw(void)
 {
 	cout << "Tytu³: " << Tytu³ << " jêzyk "<< WersjaJêzykowa << ". Gatunek: " << Gatunek << " rok: " << Rok << " d³ugoœæ (minut): " << Czas;
 	cout << " na magazynie " << Iloœæ << "sztuk.";
+}
+
+void Video::Przedstaw(string TmpGatunek)
+{
+	if (Gatunek == TmpGatunek) {
+		cout << "Tytu³: " << Tytu³ << " jêzyk "<< WersjaJêzykowa << ". Rok: " << Rok << " d³ugoœæ (minut): " << Czas;
+		cout << " na magazynie " << Iloœæ << "sztuk.";
+	}
 }
 
 Video::Video(void)

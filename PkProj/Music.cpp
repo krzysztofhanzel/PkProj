@@ -14,17 +14,19 @@ void Music::GenerujMusic(list<Twórca> ListaTwórców)
 	system ("CLS");
 	UuidCreate (&Id);
 	cout << "Dodawanie p³yty audio. Podaj Tytu³:";
-	cin >> Tytu³;
+	cin.ignore();
+	getline(cin,Tytu³);
 	do {
 		cout << "Obecnie na liœcie jest" << ListaAutorów.size() << "wykonawców.\nWybierz czy chcesz dodaæ nowego, wybraæ istniej¹cego czy te¿ wyjœæ?:\n1.Nowy Wykonawca.\n2.Istniej¹cy wykonawca\n3.Wyjœcie";
 		cin >> tmpint;
-		if (tmpint == 1) ListaAutorów.push_back(tmpwykonawca = Zarz¹dcaOsób::DodajTwórcê(ListaTwórców));
+		if (tmpint == 1) ListaAutorów.push_back(tmpwykonawca = Zarz¹dcaOsób::DodajTwórcê(&ListaTwórców));
 		if (tmpint == 2) ListaAutorów.push_back(tmpwykonawca = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców));	
 	} while (tmpint !=3);
 	cout << "Dziêkujê. Podaj Rok nagrania: ";
 	cin >> Rok;
 	cout << "Dziêkujê. Podaj Gatunek: ";
-	cin >> Gatunek;
+	cin.ignore();
+	getline(cin,Gatunek);
 	cout << "Dziêkujê. Podaj Nazwê albumu: ";
 	cin.ignore();
 	getline(cin,Album);
