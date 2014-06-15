@@ -1,12 +1,10 @@
 #pragma once
-
 #include "stdafx.h"
 #include "Zarz¹dcaOsób.h"
 #include "Twórca.h"
-using namespace std;
+#include "User.h"
 #include <list>
 #include <iostream>
-#include <cstdlib>
 #include <string>
 Zarz¹dcaOsób::Zarz¹dcaOsób(void)
 {
@@ -117,13 +115,13 @@ void Zarz¹dcaOsób::MenuTwórców(list<Twórca>* Twórcy)
 	*Twórcy = ListaTwórców;
 }
 
-Twórca Zarz¹dcaOsób::DodajTwórcê (list<Twórca>* ListaTwórców) 
+Twórca Zarz¹dcaOsób::DodajTwórcê (list<Twórca>* Twórcy) 
 {
-	Twórca tmp; list<Twórca> lista;
+	list<Twórca> ListaTwórców;			ListaTwórców = *Twórcy;
+	Twórca tmp;
 	tmp.GenerujTwórca();
-	lista = *ListaTwórców;
-	lista.push_back(tmp);
-	ListaTwórców = &lista;
+	ListaTwórców.push_back(tmp);
+	*Twórcy = ListaTwórców;
 	return tmp;
 }
 
@@ -143,6 +141,116 @@ Twórca Zarz¹dcaOsób::WydajTwórcê (list<Twórca> ListaTwórców)
 			return tmp;
 }
 
+void Zarz¹dcaOsób::MenuUserów(list<User>* U¿ytkownicy)
+{
+	list<User> ListaU¿ytkowników;
+	ListaU¿ytkowników = *U¿ytkownicy;
+	User tmp; char tmpChar;
+	string TmpImie, TmpNazwisko;
+	int switch_on;
+	do {
+		system ("CLS");
+		cout << "Wybierz opcje menu U¿ytkowników: \n";
+		cout << "1.Dodaj U¿ytkownika\n";
+		cout << "2.Przegl¹daj listê wszystkich\n";
+		cout << "3.Przegl¹daj listê posiadaj¹cych wypo¿yczenia\n";
+		cout << "4.Zast¹p poszczególne wyst¹pienia\n";
+		cout << "5.Kasuj ca³¹ listê\n";
+		cout << "6.Kasuj wybrany element listy\n";
+		cout << "9.Wyjœcie\n";
+		cin >> switch_on;
+	switch (switch_on)
+	{
+	case 1:
+		tmp.GenerujUsera();
+		ListaU¿ytkowników.push_back(tmp);
+		break;
+	case 2:
+		system ("CLS");
+		for( list<User>::iterator iter=ListaU¿ytkowników.begin(); iter != ListaU¿ytkowników.end(); iter++)
+		{
+			tmp = *iter;
+			tmp.Przedstaw();
+		}
+		std::system ("pause");
+		break;
+	case 3:
+		system ("CLS");
+		cout << "Podaj iloœæ wypo¿yczeñ jak¹ ma mieæ przedstawiany u¿ytkownik:? [liczba]";
+		int tmpint;
+		cin >> tmpint;
+		for( list<User>::iterator iter=ListaU¿ytkowników.begin(); iter != ListaU¿ytkowników.end(); iter++){
+			tmp = *iter;
+			if ((tmp.Wypo¿yczenia.size()) == tmpint)
+				tmp.Przedstaw();
+		}
+		std::system ("pause");
+		break;
+	case 4:
+		system ("CLS");
+		cout << "Podaj szukany Imie: ";
+		cin >> TmpImie;
+		cout << "Podaj szukane nazwisko: ";
+		cin >> TmpNazwisko;
+		for( list<User>::iterator iter=ListaU¿ytkowników.begin(); iter != ListaU¿ytkowników.end(); iter++) {
+			tmp = *iter;
+			if (tmp.Imie == TmpImie && tmp.Nazwisko == tmp.Nazwisko) {
+				cout << "Obecny rekord to:\n";
+				tmp.Przedstaw();
+				cout << "Zmieniæ? [T/N]";
+				char tmpChar;
+				cin >> tmpChar;
+				if (tmpChar == 'T' || tmpChar == 't') {
+					tmp.GenerujUsera();
+					*iter = tmp;
+				}
+			}
+		}
+		break;
+	case 5:
+		cout << "Czy aby na pewno chcesz skasowaæ ca³¹ listê? [T/N]";
+		if (tmpChar == 'T' || tmpChar == 't') {
+			cout << "Operacja ta spowoduje unieruchomienie programu do czasu rêcznego wprowadzenia danych przez serwis. Czy aby na pewno chcesz kontunuowaæ?? [T/N]";
+			cin >> tmpChar;
+			if (tmpChar == 'T' || tmpChar == 't') {
+				ListaU¿ytkowników.clear();
+			}
+		}
+		break;
+	case 6:
+		system ("CLS");
+		cout << "Podaj Imie:";
+		cin >> TmpImie;
+		cout << "Podaj Nazwisko:";
+		cin >> TmpNazwisko;
+		for( list<User>::iterator iter=ListaU¿ytkowników.begin(); iter != ListaU¿ytkowników.end(); iter++) {
+			tmp = *iter;
+			if (tmp.Imie == TmpImie && tmp.Nazwisko == TmpNazwisko) {
+				cout << "Obecny rekord to:\n";
+				tmp.Przedstaw();
+				cout << "Usun¹æ? [T/N]";
+				char tmpChar;
+				cin >> tmpChar;
+				if (tmpChar == 'T' || tmpChar == 't') {
+					iter = ListaU¿ytkowników.erase(iter);
+					break;
+				}
+			}
+		}
+		break;
+	default:
+		break;
+	}
+	} while (switch_on != 9);
+	*U¿ytkownicy = ListaU¿ytkowników;
+}
+
+User Zarz¹dcaOsób::WydajUsera (list<User> ListaU¿ytkowników)
+{
+	User tmpUser;
+	return tmpUser;
+}
+
 int Zarz¹dcaOsób::MenuAdmina (list<Admin>* Admini)
 	{
 		list<Admin> ListaAdminów;
@@ -155,10 +263,11 @@ int Zarz¹dcaOsób::MenuAdmina (list<Admin>* Admini)
 			cout << "Wybierz opcje menu Adminów: \n";
 			cout << "1.Dodaj Admina\n";
 			cout << "2.Przegl¹daj listê wszystkich\n";
-			cout << "3.Przegl¹daj listê tematycznie\n";
+			cout << "3.Przegl¹daj listê (nie)Uprzywilejowanych\n";
 			cout << "4.Zast¹p poszczególne wyst¹pienia\n";
 			cout << "5.Kasuj ca³¹ listê\n";
 			cout << "6.Kasuj wybrany element listy\n";
+			cout << "7.Zmiana Has³a\n";
 			cout << "9.Wyjœcie\n";
 		cin >> switch_on;
 		switch (switch_on)
@@ -178,6 +287,18 @@ int Zarz¹dcaOsób::MenuAdmina (list<Admin>* Admini)
 			break;
 		case 3:
 			system ("CLS");
+			cout << "Przedstawiæ listê uprzywilejowanych czy nieuprzywilejowanych administratorów? [U/N]";
+			char tmpChar;
+			cin >> tmpChar;
+			bool uprzywilejowany;
+			if (tmpChar == 'U' || tmpChar == 'u') 
+				uprzywilejowany = true;
+			else 
+				uprzywilejowany = false;
+			for( list<Admin>::iterator iter=ListaAdminów.begin(); iter != ListaAdminów.end(); iter++){
+				tmp = *iter;
+				tmp.Przedstaw(uprzywilejowany);
+			}
 			std::system ("pause");
 			break;
 		case 4:
@@ -201,7 +322,6 @@ int Zarz¹dcaOsób::MenuAdmina (list<Admin>* Admini)
 			break;
 		case 5:
 			cout << "Czy aby na pewno chcesz skasowaæ ca³¹ listê? [T/N]";
-			char tmpChar;
 			cin >> tmpChar;
 			if (tmpChar == 'T' || tmpChar == 't') {
 				cout << "Operacja ta spowoduje unieruchomienie programu do czasu rêcznego wprowadzenia danych przez serwis. Czy aby na pewno chcesz kontunuowaæ?? [T/N]";
@@ -225,6 +345,25 @@ int Zarz¹dcaOsób::MenuAdmina (list<Admin>* Admini)
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
 						iter = ListaAdminów.erase(iter);
+					}
+				}
+			}
+			break;
+		case 7:
+			system ("CLS");
+			cout << "Podaj Login:";
+			cin >> TmpLogin;
+			for( list<Admin>::iterator iter=ListaAdminów.begin(); iter != ListaAdminów.end(); iter++) {
+				tmp = *iter;
+				if (tmp.Login == TmpLogin) {
+					cout << "Obecny rekord to:\n";
+					tmp.Przedstaw();
+					cout << "Zmieniæ Has³o? [T/N]";
+					char tmpChar;
+					cin >> tmpChar;
+					if (tmpChar == 'T' || tmpChar == 't') {
+						tmp.ZmieñHas³o();
+*						iter = tmp;
 					}
 				}
 			}

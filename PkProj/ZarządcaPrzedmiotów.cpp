@@ -63,7 +63,7 @@ void Zarz¹dcaPrzedmiotów::MenuBook(list<Twórca>* Twórcy, list<Book>* Booktmp)
 		switch (switch_on)
 		{
 		case 1:
-			TmpBook.GenerujKsi¹¿kê(Twórcy);
+			TmpBook.GenerujKsi¹¿kê(&ListaTwórców);
 			ListaBook.push_back(TmpBook);
 			break;
 		case 2:
@@ -126,10 +126,13 @@ void Zarz¹dcaPrzedmiotów::MenuBook(list<Twórca>* Twórcy, list<Book>* Booktmp)
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
 						iter = ListaBook.erase(iter);
+						tmpChar = 'q';
 						break;
 					}
 				}
+				if (tmpChar == 'q') break;
 			}
+			break;
 		case 7:
 			system ("CLS");
 			cout << "Podaj Tytu³ Ksi¹¿ki:";
@@ -177,7 +180,7 @@ void Zarz¹dcaPrzedmiotów::MenuAudiobook(list<Twórca>* Twórcy, list<Audiobook>* A
 		switch (switch_on)
 		{
 		case 1:
-			TmpAudiobook.GenerujAudiobook(Twórcy);
+			TmpAudiobook.GenerujAudiobook(&ListaTwórców);
 			ListaAudiobook.push_back(TmpAudiobook);
 			break;
 		case 2:
@@ -241,9 +244,13 @@ void Zarz¹dcaPrzedmiotów::MenuAudiobook(list<Twórca>* Twórcy, list<Audiobook>* A
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
 						iter = ListaAudiobook.erase(iter);
+						tmpChar = 'q';
+						break;
 					}
 				}
+				if (tmpChar == 'q') break;
 			}
+			break;
 		case 7:
 			system ("CLS");
 			cout << "Podaj Tytu³ Ksi¹¿ki:";
@@ -291,7 +298,7 @@ void Zarz¹dcaPrzedmiotów::MenuMusic(list<Twórca>* Twórcy, list<Music>* Musictmp)
 		switch (switch_on)
 		{
 		case 1:
-			TmpMusic.GenerujMusic(Twórcy);
+			TmpMusic.GenerujMusic(&ListaTwórców);
 			ListaMusic.push_back(TmpMusic);
 			break;
 		case 2:
@@ -355,9 +362,13 @@ void Zarz¹dcaPrzedmiotów::MenuMusic(list<Twórca>* Twórcy, list<Music>* Musictmp)
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
 						iter = ListaMusic.erase(iter);
+						tmpChar = 'q';
+						break;
 					}
 				}
+				if (tmpChar == 'q') break;
 			}
+			break;
 		case 7:
 			system ("CLS");
 			cout << "Podaj Tytu³ P³yty:";
@@ -404,7 +415,7 @@ void Zarz¹dcaPrzedmiotów::MenuVideo(list<Twórca>* Twórcy, list<Video>* Videotmp)
 		switch (switch_on)
 		{
 		case 1:
-			TmpVideo.GenerujVideo(Twórcy);
+			TmpVideo.GenerujVideo(&ListaTwórców);
 			ListaVideo.push_back(TmpVideo);
 			break;
 		case 2:
@@ -466,9 +477,13 @@ void Zarz¹dcaPrzedmiotów::MenuVideo(list<Twórca>* Twórcy, list<Video>* Videotmp)
 					cin >> tmpChar;
 					if (tmpChar == 'T' || tmpChar == 't') {
 						iter = ListaVideo.erase(iter);
+						tmpChar = 'q';
+						break;
 					}
 				}
+				if (tmpChar == 'q') break;
 			}
+			break;
 		case 7:
 			system ("CLS");
 			cout << "Podaj Tytu³ filmówy:";

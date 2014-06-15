@@ -15,7 +15,7 @@ public:
 	std::string Notka;
 
 	void GenerujMusic(std::list<Twórca>*);
-	void Przedstaw(void);
+	virtual void Przedstaw(void);
 	void Przedstaw(std::string);
 	Music(void);
 	~Music(void);

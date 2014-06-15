@@ -21,7 +21,7 @@ void Video::GenerujVideo(list<Twórca> * Twórcy)
 		cout << "Obecnie na liœcie jest" << ListaAutorów.size() << "aktorów.\nWybierz czy chcesz dodaæ nowego, wybraæ istniej¹cego czy te¿ wyjœæ?:\n1.Nowy Aktor.\n2.Istniej¹cy Aktor\n3.Wyjœcie";
 		cin >> tmpint;
 		if (tmpint == 1) ListaAutorów.push_back(tmpaktor = Zarz¹dcaOsób::DodajTwórcê(&ListaTwórców));
-		if (tmpint == 2) ListaAutorów.push_back(tmpaktor= Zarz¹dcaOsób::WydajTwórcê(ListaTwórców));	
+		if (tmpint == 2) {tmpaktor = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców); if (tmpaktor.Plec == ' ')  ListaAutorów.push_back(tmpaktor);}
 	} while (tmpint !=3);
 	cout << "Dziêkujê. Podaj Wersjê jêzykow¹:";
 	cin.ignore();
@@ -51,7 +51,7 @@ void Video::Przedstaw(string TmpGatunek)
 {
 	if (Gatunek == TmpGatunek) {
 		cout << "Tytu³: " << Tytu³ << " jêzyk "<< WersjaJêzykowa << ". Rok: " << Rok << " d³ugoœæ (minut): " << Czas;
-		cout << " na magazynie " << Iloœæ << "sztuk.";
+		cout << "\nna magazynie " << Iloœæ << " sztuk.";
 	}
 }
 

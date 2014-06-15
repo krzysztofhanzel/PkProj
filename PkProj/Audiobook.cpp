@@ -21,7 +21,7 @@ void Audiobook::GenerujAudiobook(list<Twórca>* Twórcy)
 		cout << "Obecnie na liœcie jest" << ListaAutorów.size() << "autorów.\nWybierz czy chcesz dodaæ nowego autora, wybraæ istniej¹cego czy te¿ wyjœæ?:\n1.Nowy Autor.\n2.Istniej¹cy Autor\n3.Wyjœcie";
 		cin >> tmpint;
 		if (tmpint == 1) ListaAutorów.push_back(tmpautor = Zarz¹dcaOsób::DodajTwórcê(&ListaTwórców));
-		if (tmpint == 2) ListaAutorów.push_back(tmpautor = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców));	
+		if (tmpint == 2) {tmpautor = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców); if (tmpautor.Plec == ' ')  ListaAutorów.push_back(tmpautor);}
 	} while (tmpint !=3);
 	cout << "Dziêkujê. Podaj Rok nagrania: ";
 	cin >> Rok;
@@ -50,7 +50,7 @@ void Audiobook::Przedstaw(string TmpGatunek)
 {
 	if (Gatunek == TmpGatunek){
 		cout << "Tytu³: " << Tytu³ << " Gatunek: " << Gatunek << " rok: " << Rok << " czas s³uchania(minut): " << Czas;
-		cout << " Rok wydania ksi¹¿ki: " << RokKsi¹¿ki << " na magazynie " << Iloœæ << "sztuk.";
+		cout << "Rok wydania ksi¹¿ki: " << RokKsi¹¿ki << "\nna magazynie " << Iloœæ << " sztuk.";
 	}
 }
 

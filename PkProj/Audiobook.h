@@ -15,7 +15,7 @@ public:
 	std::string Notka;
 
 	void GenerujAudiobook(std::list<Twórca>*);
-	void Przedstaw(void);
+	virtual void Przedstaw(void);
 	void Przedstaw(std::string);
 	Audiobook(void);
 	~Audiobook(void);

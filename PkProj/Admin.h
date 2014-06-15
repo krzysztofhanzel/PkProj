@@ -1,5 +1,5 @@
 #pragma once
-#include "person.h"
+#include "Person.h"
 #include "User.h"
 #include <rpc.h>
 #include <list>
@@ -8,12 +8,20 @@
 #include <iostream>
 
 class Admin :
-	public Person
+	public Person, public User
 {
 public:
+	using Person::Imie;
+	using Person::DataUrodzenia;
+	using Person::Id;
+	using Person::Nazwisko;
+	using Person::Plec;
+
 	std::string Login;
 	void GenerujAdmina(void);
 	void Przedstaw(void);
+	void Przedstaw(bool);
+	void ZmieñHas³o(void);
 	Admin(void);
 	~Admin(void);
 private:

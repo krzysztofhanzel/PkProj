@@ -11,7 +11,7 @@ using namespace std;
 
 void Admin::GenerujAdmina()
 {
-	string tmphaslo, tmphaslo2;
+	string tmphaslo, tmphaslo2, tmpimie;
 	system ("CLS");
 	UuidCreate (&Id);
 	Uprzywilejowane = Aktywne = false;
@@ -53,21 +53,53 @@ void Admin::GenerujAdmina()
 			}
 			else cout << "Has³a niezgodne, wprowadŸ jeszcze raz.\n";
 		}
-	} while (tmp != 'N');	
+	} while (tmp == 't' || tmp == 'T');	
 
 }
 
 void Admin::Przedstaw() 
 {
-	cout << " " << Imie << " " <<  Nazwisko << ", urodzony " << DataUrodzenia.Dzien << "." << DataUrodzenia.Miesiac << "." << DataUrodzenia.Rok << ".\n";
+	cout << Imie << " " <<  Nazwisko << ", urodzony " << DataUrodzenia.Dzien << "." << DataUrodzenia.Miesiac << "." << DataUrodzenia.Rok << ".\n";
 	cout << "Uprawnienia: \n";
 	cout << "Konto uprzywilejowane: ";
 	if (Uprzywilejowane) cout << "TAK\n"; else cout << "NIE\n";
 	cout << "Konto aktywne: ";
 	if (Aktywne) cout << "TAK\n"; else cout << "NIE\n";
-
 }
 
+void Admin::Przedstaw(bool uprzywilejowany) 
+{
+	if (Uprzywilejowane == uprzywilejowany)
+		Admin::Przedstaw();
+}
+
+void Admin::ZmieñHas³o()
+{
+	int tmp; int prób1 = 3, prób2 = 3;
+	string obecnehas³o, tmphaslo, tmphaslo2;
+	do {
+		cout << "Podajobecne has³o:";
+		cin >> obecnehas³o;
+		if (obecnehas³o == Has³o && prób2 > 0){
+			cout << "Podaj nowe has³o: ";
+			cin >> tmphaslo;
+			cout << "Podaj nowe has³o ponownie: ";
+			cin >> tmphaslo2;
+			if (tmphaslo == tmphaslo2) {
+				Has³o = tmphaslo;
+				prób2 = prób1 = 0;
+			}
+			else{
+				cout << "Has³a niezgodne, wprowadŸ jeszcze raz.\n";
+				prób2--;
+			}
+		}
+		else {
+			cout << "Has³a niezgodne, wprowadŸ jeszcze raz.\n";
+			prób1--;
+		}
+	} while (prób1 > 0);
+}
 
 Admin::Admin(void)
 {

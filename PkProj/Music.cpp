@@ -21,7 +21,7 @@ void Music::GenerujMusic(list<Twórca>* Twórcy)
 		cout << "Obecnie na liœcie jest" << ListaAutorów.size() << "wykonawców.\nWybierz czy chcesz dodaæ nowego, wybraæ istniej¹cego czy te¿ wyjœæ?:\n1.Nowy Wykonawca.\n2.Istniej¹cy wykonawca\n3.Wyjœcie";
 		cin >> tmpint;
 		if (tmpint == 1) ListaAutorów.push_back(tmpwykonawca = Zarz¹dcaOsób::DodajTwórcê(&ListaTwórców));
-		if (tmpint == 2) ListaAutorów.push_back(tmpwykonawca = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców));	
+		if (tmpint == 2) {tmpwykonawca = Zarz¹dcaOsób::WydajTwórcê(ListaTwórców); if (tmpwykonawca.Plec == ' ')  ListaAutorów.push_back(tmpwykonawca);}
 	} while (tmpint !=3);
 	cout << "Dziêkujê. Podaj Rok nagrania: ";
 	cin >> Rok;
@@ -44,7 +44,7 @@ void Music::GenerujMusic(list<Twórca>* Twórcy)
 void Music::Przedstaw(void)
 {
 	cout << "Tytu³: " << Tytu³ << " z albumu "<< Album << ". Gatunek: " << Gatunek << " rok: " << Rok << " czas s³uchania(minut): " << Czas;
-	cout << " na magazynie " << Iloœæ << "sztuk.";
+	cout << "\nna magazynie " << Iloœæ << " sztuk.";
 }
 
 void Music::Przedstaw(string TmpGatunek)

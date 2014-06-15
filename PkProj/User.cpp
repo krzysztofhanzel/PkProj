@@ -3,6 +3,7 @@
 #include <list>
 #include <cstdio>
 #include <rpc.h>
+using namespace std;
 
 void User::GenerujUsera(void)
 {
